@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monkey Clicker – Minigames</title>
+    <!-- Re-use global styles so it matches the main UI -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Extra styles only for the minigame page */
+        #minigameMenu {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0 20px;
+        }
+        #minigameMenu button {
+            flex: 1;
+        }
+        .game {
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .game.active { display: block; }
+        /* Whac-A-Banana specific */
+        #whacBoard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .hole {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%; /* square */
+            background: #5a3e1f; /* monkey brown */
+            border: 3px solid #8b4513;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .hole img {
+            position: absolute;
+            width: 70%;
+            left: 50%;
+            top: 100%; /* start hidden below */
+            transform: translate(-50%, 0);
+            transition: top 0.1s;
+            pointer-events: none;
+            user-select: none;
+        }
+        .hole.show img { top: 20%; }
+        #scoreBoard {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #ffcc00;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:100%;max-width:800px;margin:0 auto;text-align:center;">
+        <h1>Minigames</h1>
+        <div id="minigameMenu">
+            <button data-game="whac" class="tab active">Whac-A-Banana</button>
+            <button data-game="coming" class="tab" disabled>More Soon…</button>
+            <button onclick="history.back()" class="tab">↩ Back</button>
+        </div>
+        <!-- Whac-A-Banana game container -->
+        <div id="whacGame" class="game active">
+            <div id="scoreBoard">
+                Time: <span id="time">30</span>s  |  Score: <span id="score">0</span>
+            </div>
+            <button id="btnStartWhac" style="margin-top:10px;">Start Game</button>
+            <div id="whacBoard"></div>
+        </div>
+    </div>
+
+    <script src="resources/scripts/minigames.js"></script>
+</body>
+</html>

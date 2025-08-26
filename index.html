@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monkey Clicker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="scripts/script.js"></script>
+    <script defer src="scripts/bananaImages.js"></script>
+</head>
+<body>
+
+    <div id="titleScreen">
+        <div id="loader">
+            <div class="title-container">
+                <h1 class="changelog-title">Monkey Clicker</h1>
+            </div>
+            <div id="bananaBurst"></div>
+        </div>
+        <button id="btnStart">Start</button>
+        <button onclick="window.location.href='changelog.html';" id="btnChangelog">Changelog</button>
+        <button onclick="window.location.href='achievements.html';" id="btnAchievements">Achievements</button>
+        <button onclick="window.location.href='minigames.html';" id="btnMinigames">Minigames</button>
+    </div>
+    <div id="banana-container"></div>
+    <div id="gameScreen">
+        <div id="clickArea">
+            <img id="banana" src="./images/banana.png" alt="Banana" />
+        </div>
+        <!--
+            <div id="loreConsole">
+      <div id="loreTitle">Log</div>
+      <div id="loreMessages"></div>
+    </div>
+            -->
+        <div id="productionArea">
+            <!-- Display purchased buildings here -->
+        </div>
+        <div id="storeArea">
+            <div id="tabs">
+                <div class="tab active" data-target="upgradesPanel">Upgrades</div>
+                <div class="tab" data-target="buildingsPanel">Buildings</div>
+            </div>
+            <div id="upgradesPanel" class="panel active">
+                <div class="item" data-type="upgrade" data-upgrade="Improved Banana Tree" data-cost="100"
+                     data-description="Doubles Banana Tree production">
+                    <span>Improved Banana Tree - Cost: 100 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Faster Monkeys" data-cost="200"
+                     data-description="Monkeys work 40% faster">
+                    <span>Faster Monkeys - Cost: 200 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Automated Factories" data-cost="500"
+                     data-description="Factories run twice as efficiently">
+                    <span>Automated Factories - Cost: 500 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Advanced Research" data-cost="800"
+                     data-description="Labs produce 2.5x more bananas">
+                    <span>Advanced Research - Cost: 800 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Market Expansion" data-cost="1200"
+                     data-description="Markets get a 100% production boost">
+                    <span>Market Expansion - Cost: 1200 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Golden Banana Boost" data-cost="1500"
+                     data-description="Doubles bananas gained per click">
+                    <span>Golden Banana Boost - Cost: 1500 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Banana Fertilizer" data-cost="2000"
+                     data-description="Banana Trees produce 50% more">
+                    <span>Banana Fertilizer - Cost: 2000 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Monkey Training" data-cost="300"
+                     data-description="Workers become 50% more efficient">
+                    <span>Monkey Training - Cost: 300 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Factory Overhaul" data-cost="1000"
+                     data-description="Factories produce 3x more bananas">
+                    <span>Factory Overhaul - Cost: 1000 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+                <div class="item" data-type="upgrade" data-upgrade="Global Trade" data-cost="1800"
+                     data-description="Markets triple their production">
+                    <span>Global Trade - Cost: 1800 Bananas</span>
+                    <button class="buy">Buy</button>
+                </div>
+            </div>
+            <div id="bananaMenu">
+                <select id="bananaSelect">
+                    <!-- Options will be added dynamically -->
+                </select>
+            </div>
+            <div id="buildingsPanel" class="panel">
+                    <div class="item"
+                         data-type="building"
+                         data-building="Cursor"
+                         data-cost="10"
+                         data-description="Autoclicks the banana once per second">
+                        <span>Cursor - Cost: 10 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                    <div class="item" data-type="building" data-building="Banana Tree" data-cost="15"
+                         data-description="A humble Banana Tree...">
+                        <span>Banana Tree - Cost: 100 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                    <div class="item" data-type="building" data-building="Monkey Worker" data-cost="75"
+                         data-description="A diligent monkey...">
+                        <span>Monkey Worker - Cost: 1100 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                    <div class="item" data-type="building" data-building="Banana Factory" data-cost="250"
+                         data-description="An automated banana...">
+                        <span>Banana Factory - Cost: 13,000 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                    <div class="item" data-type="building" data-building="Banana Research Lab" data-cost="600"
+                         data-description="Scientists work here...">
+                        <span>Banana Research Lab - Cost: 150,000 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                    <div class="item" data-type="building" data-building="Banana Market" data-cost="1250"
+                         data-description="A bustling marketplace...">
+                        <span>Banana Market - Cost: 140,000,000 Bananas</span>
+                        <button class="buy">Buy</button>
+                    </div>
+                </div>
+            </div>
+        <div id="statusBar">
+            <div id="playTime">Time: 00:00:00</div>
+            <button class="btn-status" id="btnExportSave">Export Save</button>
+            <button class="btn-status" id="btnImportSave">Import Save</button>
+            <input type="file" id="importFileInput" accept="application/json" style="display:none" />
+            <button class="btn-status" id="btnCases">Cases</button>
+            <button class="btn-status" id="btnStats">Stats</button>
+            <button class="btn-status" id="btnQuests">Quests</button>
+            <button class="btn-status" id="btnSettings">Settings</button>
+        </div>
+    </div>
+    <!-- Case Opener Modal -->
+    <div id="caseModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Banana Skin Cases</h2>
+            <div id="caseContainer"></div>
+            <div id="caseOpening" class="hidden">
+                <!-- Add this container for CS animation -->
+                <div id="csAnimationContainer" class="hidden">
+                    <div id="csItemsGrid"></div>
+                </div>
+
+                <div id="caseAnimation">
+                    <div id="spinningBanana">🍌</div>
+                </div>
+                <div id="unlockedSkin" class="hidden">
+                    <h3>You Unlocked:</h3>
+                    <div id="skinResult"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-settings">&times;</span>
+            <h2>Settings</h2>
+            <form id="settingsForm">
+                <!-- Case Animation Style -->
+                <fieldset>
+                    <legend>Case Open Animation</legend>
+                    <label>
+                        <input type="radio" name="caseAnim" value="normal" checked>
+                        Normal
+                    </label><br>
+                    <label>
+                        <input type="radio" name="caseAnim" value="cs">
+                        Counter‑Strike Style
+                    </label>
+                </fieldset>
+
+                <!-- Extra Settings -->
+                <fieldset>
+                    <legend>General</legend>
+                    <label>
+                        <input type="checkbox" name="showTooltips" checked>
+                        Show item tooltips
+                    </label><br>
+                    <label>
+                        <input type="checkbox" name="autoSave">
+                        Auto‑save every minute
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Audio</legend>
+                    <label>
+                        <input type="checkbox" name="soundFX" checked>
+                        Sound Effects
+                    </label><br>
+                    <label>
+                        Volume:
+                        <input type="range" name="volume" min="0" max="1" step="0.1" value="0.8">
+                    </label>
+                </fieldset>
+
+                <button type="submit" class="btn-status">Save Settings</button>
+            </form>
+        </div>
+    </div>
+    <div id="statsModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-stats">&times;</span>
+            <h2>Game Statistics</h2>
+            <div id="statsContainer">
+                <div class="stats-section">
+                    <h3>General Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Bananas Earned:</span>
+                            <span class="stat-value" id="totalBananasEarned">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Current Bananas:</span>
+                            <span class="stat-value" id="currentBananas">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Clicks:</span>
+                            <span class="stat-value" id="totalClicks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bananas Per Second:</span>
+                            <span class="stat-value" id="bananasPerSecond">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Play Time:</span>
+                            <span class="stat-value" id="totalPlayTime">00:00:00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Average BPS:</span>
+                            <span class="stat-value" id="averageBPS">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h3>Buildings</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Buildings Owned:</span>
+                            <span class="stat-value" id="totalBuildings">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Upgrades Owned:</span>
+                            <span class="stat-value" id="totalUpgrades">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bananas Spent on Buildings:</span>
+                            <span class="stat-value" id="bananasSpentBuildings">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bananas Spent on Upgrades:</span>
+                            <span class="stat-value" id="bananasSpentUpgrades">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h3>Banana Collection</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Banana Types Unlocked:</span>
+                            <span class="stat-value" id="bananaTypesUnlocked">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Banana Skins:</span>
+                            <span class="stat-value" id="totalSkins">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Cases Opened:</span>
+                            <span class="stat-value" id="casesOpened">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Bananas Spent on Cases:</span>
+                            <span class="stat-value" id="bananasSpentCases">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h3>Minigames</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Whac-A-Banana Games Played:</span>
+                            <span class="stat-value" id="whacGamesPlayed">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Best Whac-A-Banana Score:</span>
+                            <span class="stat-value" id="bestWhacScore">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Whac-A-Banana Score:</span>
+                            <span class="stat-value" id="totalWhacScore">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h3>Efficiency</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Click Efficiency:</span>
+                            <span class="stat-value" id="clickEfficiency">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Building Efficiency:</span>
+                            <span class="stat-value" id="buildingEfficiency">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Upgrade Efficiency:</span>
+                            <span class="stat-value" id="upgradeEfficiency">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="questsModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-quests">&times;</span>
+        <h2>Quests</h2>
+        <div class="quests-tabs">
+          <button class="quest-tab active" data-tab="daily">Daily</button>
+          <button class="quest-tab" data-tab="weekly">Weekly</button>
+          <button class="quest-tab locked" data-tab="story" disabled>Story <span class="coming-soon">(Coming Soon)</span></button>
+        </div>
+        <div class="quests-content">
+          <div class="quest-panel" id="dailyQuestsPanel">
+            <h3>Daily Quests</h3>
+            <ul id="dailyQuestsList">
+              <li id="dailyClicksItem">Click 100 times <span class="quest-progress" id="dailyClicks">0/100</span> <button class="claim-btn" id="claimDailyClicks" disabled>Claim</button></li>
+              <li id="dailyBananasItem">Earn 1,000 bananas <span class="quest-progress" id="dailyBananas">0/1000</span> <button class="claim-btn" id="claimDailyBananas" disabled>Claim</button></li>
+            </ul>
+          </div>
+          <div class="quest-panel hidden" id="weeklyQuestsPanel">
+            <h3>Weekly Quests</h3>
+            <ul id="weeklyQuestsList">
+              <li id="weeklyBuildingsItem">Buy 10 buildings <span class="quest-progress" id="weeklyBuildings">0/10</span> <button class="claim-btn" id="claimWeeklyBuildings" disabled>Claim</button></li>
+              <li id="weeklyCasesItem">Open 5 cases <span class="quest-progress" id="weeklyCases">0/5</span> <button class="claim-btn" id="claimWeeklyCases" disabled>Claim</button></li>
+            </ul>
+          </div>
+          <div class="quest-panel hidden" id="storyQuestsPanel">
+            <h3>Story Quests</h3>
+            <p class="coming-soon">Coming Soon!</p>
+          </div>
+          <div id="questCompleteAnim" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

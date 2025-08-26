@@ -1,0 +1,56 @@
+{
+  "name": "monkey-clicker",
+  "version": "1.0.0",
+  "description": "A fun banana-clicking adventure game",
+  "author": "m33, monkey3three.com",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.example.monkeyclicker",
+    "files": [
+      "**/*",
+      "!saves"
+    ],
+    "directories": {
+      "buildResources": "images"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "images/icon.ico"
+    },
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "images/icon.icns"
+    },
+    "linux": {
+      "category": "Game",
+      "icon": "images/icon.png"
+    },
+    "extraResources": [
+      {
+        "from": "sounds",
+        "to": "sounds"
+      },
+      {
+        "from": "css",
+        "to": "css"
+      },
+      {
+        "from": "scripts",
+        "to": "scripts"
+      }
+    ]
+  }
+}
